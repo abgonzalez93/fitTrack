@@ -1,5 +1,5 @@
-import morgan from 'morgan';
+import morgan from 'morgan'
 
-const loggerMiddleware = morgan(process.env.NODE_ENV === 'develop' ? 'dev' : 'combined');
+const loggerMiddleware = morgan(process.env.NODE_ENV === 'develop' ? 'dev' : 'combined')
 
-export default loggerMiddleware;
+export default loggerMiddleware

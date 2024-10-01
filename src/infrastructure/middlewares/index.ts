@@ -15,7 +15,7 @@ const middlewares = (app: Application): void => {
   app.use(corsMiddleware)
   app.use(rateLimiter)
   app.use(loggerMiddleware)
-  app.use(authMiddleware)
+  authMiddleware(app)
 
   // Parseo de body
   app.use(express.json({ limit: bodyLimit }))
@@ -23,6 +23,6 @@ const middlewares = (app: Application): void => {
 
   // Archivos estáticos
   app.use(express.static('public'))
-};
+}
 
 export default middlewares
