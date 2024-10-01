@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --watch src/**/*.ts --exec ts-node -r tsconfig-paths/register src/bin/server.ts",
+    "start": "nodemon --watch src/**/*.ts --exec ts-node -r tsconfig-paths/register src/server.ts",
     "build": "tsc",
-    "start:prod": "node dist/bin/server.js"
+    "start:prod": "node dist/server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
