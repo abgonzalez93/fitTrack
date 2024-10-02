@@ -1,18 +1,26 @@
-import path from 'path'
-import dotenv from 'dotenv'
 import express, { type Express } from "express"
 import middlewares from "@middlewares/index"
 import router from "@routes/index"
 import config from '@config/config'
+import { connectDB } from '@config/database'
 
-dotenv.config({ path: path.resolve(__dirname, '../.env') })
-
+const { PORT } = config
 const app: Express = express()
-middlewares(app)
-app.use(router)
 
-const { PORT: port } = config
+const startServer = async () => {
+  try {
+    await connectDB()
+    console.log('Database connected successfully')
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
-})
+    middlewares(app)
+    app.use(router)
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`)
+    })
+  } catch (error) {
+    console.error('Database connection error:', error)
+  }
+}
+
+startServer()
