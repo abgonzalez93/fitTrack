@@ -2,15 +2,16 @@ import express, { type Express } from "express"
 import middlewares from "@middlewares/index"
 import router from "@routes/index"
 import config from '@config/config'
-import { connectDB } from '@config/database'
+import container from "@infrastructure/container"
+import DatabaseUseCase from "@useCases/DatabaseUseCase"
 
 const { PORT } = config
 const app: Express = express()
+const databaseUseCase = container.resolve<DatabaseUseCase>("databaseUseCase")
 
-const startServer = async () => {
+;(async () => {
   try {
-    await connectDB()
-    console.log('Database connected successfully')
+    await databaseUseCase.connectDatabase()
 
     middlewares(app)
     app.use(router)
@@ -19,8 +20,6 @@ const startServer = async () => {
       console.log(`Server is running on port ${PORT}`)
     })
   } catch (error) {
-    console.error('Database connection error:', error)
+    console.error('Failed to start the server:', error)
   }
-}
-
-startServer()
+})()
