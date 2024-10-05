@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion } from "mongodb"
+import logger from "@logging/logger"
 import DatabasePort from "@ports/DatabasePort"
 import config from "@config/config"
 
@@ -21,9 +22,9 @@ export default class DatabaseService implements DatabasePort {
     try {
       await this.client.connect()
       await this.client.db("admin").command({ ping: 1 })
-      console.log("You successfully connected to MongoDB!")
+      logger.info("You successfully connected to MongoDB!")
     } catch (error) {
-      console.error("Error connecting to MongoDB:", error)
+      logger.error("Error connecting to MongoDB:", error)
       throw error
     }
   }
@@ -32,10 +33,10 @@ export default class DatabaseService implements DatabasePort {
     try {
       if (this.client) {
         await this.client.close()
-        console.log("Database connection closed")
+        logger.info("Database connection closed")
       }
     } catch (error) {
-      console.error("Error closing database connection:", error)
+      logger.error("Error closing database connection:", error)
       throw error
     }
   }

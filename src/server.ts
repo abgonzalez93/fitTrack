@@ -1,4 +1,5 @@
 import express, { type Express } from "express"
+import logger from "@logging/logger"
 import middlewares from "@middlewares/index"
 import router from "@routes/index"
 import config from '@config/config'
@@ -17,9 +18,9 @@ const databaseUseCase = container.resolve<DatabaseUseCase>("databaseUseCase")
     app.use(router)
 
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`)
+      logger.info(`Server is running on port ${PORT}`)
     })
   } catch (error) {
-    console.error('Failed to start the server:', error)
+    logger.error('Failed to start the server:', error)
   }
 })()

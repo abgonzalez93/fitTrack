@@ -21,12 +21,13 @@
       "@repositories/*": ["core/domain/repositories/*","infrastructure/repositories/*"],
       "@services/*": ["core/domain/services/*"],
       "@ports/*": ["core/ports/*"],
-      "@infrastructure/*": ["infrastructure/*"],
       "@config/*": ["infrastructure/config/*"],
       "@controllers/*": ["infrastructure/controllers/*"],
       "@database/*": ["infrastructure/database/*"],
+      "@logging/*": ["infrastructure/logging/*"],
       "@middlewares/*": ["infrastructure/middlewares/*"],
       "@routes/*": ["infrastructure/routes/*"],
+      "@infrastructure/*": ["infrastructure/*"],
       "@shared/*": ["shared/*"]
     }
   },
