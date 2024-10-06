@@ -1,19 +1,17 @@
 import path from "path"
 import { createLogger, format, transports } from "winston"
 
-const { combine, timestamp, printf, colorize } = format
-
-const customFormat = printf(({ level, message, timestamp }) => {
-  const formattedDate = new Date(timestamp).toLocaleString()
-  return `[${formattedDate}] ${level}: ${message}`
-})
+const { combine, colorize, timestamp, align, printf } = format
 
 const logger = createLogger({
   level: 'info',
   format: combine(
-    timestamp(),
-    colorize(),
-    customFormat
+    colorize({ all: true }),
+    timestamp({
+      format: 'YYYY-MM-DD hh:mm:ss A',
+    }),
+    align(),
+    printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`)
   ),
   transports: [
     new transports.Console(),

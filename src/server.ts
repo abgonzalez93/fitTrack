@@ -22,5 +22,6 @@ const databaseUseCase = container.resolve<DatabaseUseCase>("databaseUseCase")
     })
   } catch (error) {
     logger.error('Failed to start the server:', error)
+    process.exit(1)
   }
 })()

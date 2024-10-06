@@ -11,9 +11,9 @@ export default class DatabaseService implements DatabasePort {
   constructor() {
     this.client = new MongoClient(DB_URI, {
       serverApi: {
-          version: ServerApiVersion.v1,
-          strict: true,
-          deprecationErrors: true
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true
       }
     })
   }
@@ -21,7 +21,6 @@ export default class DatabaseService implements DatabasePort {
   async connect(): Promise<void> {
     try {
       await this.client.connect()
-      await this.client.db("admin").command({ ping: 1 })
       logger.info("You successfully connected to MongoDB!")
     } catch (error) {
       logger.error("Error connecting to MongoDB:", error)
