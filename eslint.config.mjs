@@ -19,6 +19,7 @@ export default tseslint.config({
   rules: {
     "@typescript-eslint/no-extraneous-class": "off",
     "@stylistic/ts/indent": ["error", 2],
+    "@stylistic/ts/quotes": ["error", "single"],
   },
   plugins: {
     "@typescript-eslint": tseslintPlugin,

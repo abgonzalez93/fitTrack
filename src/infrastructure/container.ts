@@ -1,22 +1,34 @@
-import DatabaseService from "@database/DatabaseService"
-import DatabaseUseCase from "@useCases/DatabaseUseCase"
-import DatabasePort from "@ports/DatabasePort"
+import DatabaseService from '@database/DatabaseService'
+import DatabaseUseCase from '@useCases/DatabaseUseCase'
+import DatabasePort from '@ports/DatabasePort'
+
+interface ContainerInstanceMap {
+  databaseService: DatabaseService
+  databaseUseCase: DatabaseUseCase
+  databasePort: DatabasePort
+}
 
 class Container {
-  private instances: { [key: string]: any } = {}
+  private instances: Partial<ContainerInstanceMap> = {}
 
-  register(key: string, instance: any): void {
+  register<K extends keyof ContainerInstanceMap>(key: K, instance: ContainerInstanceMap[K]): void {
     this.instances[key] = instance
   }
 
-  resolve<T>(key: string): T {
-    return this.instances[key]
+  resolve<K extends keyof ContainerInstanceMap>(key: K): ContainerInstanceMap[K] {
+    const instance = this.instances[key]
+
+    if (!instance) {
+      throw new Error(`Instance for ${key} not found`)
+    }
+
+    return instance
   }
 }
 
 const container = new Container()
 
-container.register("databaseService", new DatabaseService())
-container.register("databaseUseCase", new DatabaseUseCase(container.resolve<DatabasePort>("databaseService")))
+container.register('databaseService', new DatabaseService())
+container.register('databaseUseCase', new DatabaseUseCase(container.resolve('databaseService')))
 
 export default container

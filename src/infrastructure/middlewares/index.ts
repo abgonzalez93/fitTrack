@@ -12,6 +12,7 @@ import express from 'express'
 const { BODY_LIMIT } = config
 
 const middlewares = (app: Application): void => {
+  // Middlewares
   app.use(helmetMiddleware)
   app.use(compressionMiddleware)
   app.use(corsMiddleware)
@@ -19,9 +20,14 @@ const middlewares = (app: Application): void => {
   app.use(morganMiddleware)
   authMiddleware(app)
 
+  // Parses bodies
   app.use(express.json({ limit: BODY_LIMIT }))
   app.use(express.urlencoded({ limit: BODY_LIMIT, extended: true }))
+
+  // Static files
   app.use(express.static('public'))
+
+  // Error handling
   app.use(errorHandler)
 }
 

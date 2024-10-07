@@ -1,7 +1,7 @@
-import { MongoClient, ServerApiVersion } from "mongodb"
-import logger from "@logging/logger"
-import DatabasePort from "@ports/DatabasePort"
-import config from "@config/config"
+import { MongoClient, ServerApiVersion } from 'mongodb'
+import logger from '@logging/logger'
+import DatabasePort from '@ports/DatabasePort'
+import config from '@config/config'
 
 const { DB_URI } = config
 
@@ -21,10 +21,10 @@ export default class DatabaseService implements DatabasePort {
   async connect(): Promise<void> {
     try {
       await this.client.connect()
-      logger.info("You successfully connected to MongoDB!")
+      logger.info('You successfully connected to MongoDB!')
     } catch (error) {
-      logger.error("Error connecting to MongoDB:", error)
-      throw error
+      logger.error(`Error connecting to MongoDB: ${error}`)
+      throw new Error('Error connecting to MongoDB')
     }
   }
 
@@ -32,11 +32,11 @@ export default class DatabaseService implements DatabasePort {
     try {
       if (this.client) {
         await this.client.close()
-        logger.info("Database connection closed")
+        logger.info('Database connection closed')
       }
     } catch (error) {
-      logger.error("Error closing database connection:", error)
-      throw error
+      logger.error(`Error closing database connection: ${error}`)
+      throw new Error('Error closing database connection')
     }
   }
 

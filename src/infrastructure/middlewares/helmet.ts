@@ -4,7 +4,7 @@ import config from '@config/config'
 const { NODE_ENV } = config
 
 const helmetMiddleware = helmet({
-  contentSecurityPolicy: NODE_ENV === 'master' ? undefined : false, // Deshabilitar CSP en desarrollo
+  contentSecurityPolicy: NODE_ENV === 'master' ? undefined : false,
   crossOriginResourcePolicy: { policy: 'cross-origin' }
 })
 

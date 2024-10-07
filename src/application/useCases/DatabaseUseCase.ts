@@ -1,5 +1,5 @@
-import { MongoClient } from "mongodb"
-import DatabasePort from "@ports/DatabasePort"
+import { MongoClient } from 'mongodb'
+import DatabasePort from '@ports/DatabasePort'
 
 export default class DatabaseUseCase {
   constructor(private databasePort: DatabasePort) {}

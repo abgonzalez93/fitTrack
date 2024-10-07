@@ -1,14 +1,13 @@
-import express, { type Express } from "express"
-import logger from "@logging/logger"
-import middlewares from "@middlewares/index"
-import router from "@routes/index"
+import express, { type Express } from 'express'
+import logger from '@logging/logger'
+import middlewares from '@middlewares/index'
+import router from '@routes/index'
 import config from '@config/config'
-import container from "@infrastructure/container"
-import DatabaseUseCase from "@useCases/DatabaseUseCase"
+import container from '@infrastructure/container'
 
 const { PORT } = config
 const app: Express = express()
-const databaseUseCase = container.resolve<DatabaseUseCase>("databaseUseCase")
+const databaseUseCase = container.resolve('databaseUseCase')
 
 ;(async () => {
   try {
@@ -21,7 +20,7 @@ const databaseUseCase = container.resolve<DatabaseUseCase>("databaseUseCase")
       logger.info(`Server is running on port ${PORT}`)
     })
   } catch (error) {
-    logger.error('Failed to start the server:', error)
+    logger.error(`Failed to start the server: ${error}`)
     process.exit(1)
   }
 })()
