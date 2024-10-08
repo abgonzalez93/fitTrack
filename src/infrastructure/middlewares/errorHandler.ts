@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { httpStatus } from '@shared/constants'
+import httpStatus from '@shared/httpStatus'
 import logger from '@logging/logger'
 import config from '@config/config'
 

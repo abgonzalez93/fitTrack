@@ -28,7 +28,7 @@
       "@logging/*": ["infrastructure/logging/*"],
       "@middlewares/*": ["infrastructure/middlewares/*"],
       "@routes/*": ["infrastructure/routes/*"],
-      "@infrastructure/*": ["infrastructure/*"],
+      "@container/*": ["infrastructure/container/*"],
       "@shared/*": ["shared/*"]
     }
   },

@@ -1,5 +1,5 @@
 import express, { type Express } from 'express'
-import container from '@infrastructure/container'
+import container from '@container/container'
 import middlewares from '@middlewares/index'
 import logger from '@logging/logger'
 import config from '@config/config'

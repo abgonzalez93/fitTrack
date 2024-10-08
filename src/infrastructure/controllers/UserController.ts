@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
-import { httpStatus } from '@shared/constants'
 import UserUseCase from '@useCases/UserUseCase'
+import httpStatus from '@shared/httpStatus'
 
 class UserController {
   constructor(private readonly userUseCase: UserUseCase) {}

@@ -41,9 +41,4 @@ const httpStatus = {
   HTTP_VERSION_NOT_SUPPORTED: 505
 }
 
-const responseStatus = {
-  SUCCESS: 'success',
-  ERROR: 'error'
-}
-
-export { httpStatus, responseStatus }
+export default httpStatus
