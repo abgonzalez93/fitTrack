@@ -7,7 +7,7 @@ interface Config {
   RATE_LIMIT_MAX: number
 }
 
-export const config: Config = {
+const config: Config = {
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS?.split(',') ?? (process.env.NODE_ENV === 'master' ? [] : ['*']),
   BODY_LIMIT: process.env.BODY_LIMIT ?? '100mb',
   DB_URI: process.env.DB_URI ?? '',

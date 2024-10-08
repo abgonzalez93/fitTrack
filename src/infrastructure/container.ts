@@ -1,11 +1,17 @@
+import DatabaseAdapter from '@adapters/DatabaseAdapter'
 import DatabaseService from '@database/DatabaseService'
-import DatabaseUseCase from '@useCases/DatabaseUseCase'
-import DatabasePort from '@ports/DatabasePort'
+import UserAdapter from '@adapters/UserAdapter'
+import UserService from '@services/UserService'
+import UserUseCase from '@useCases/UserUseCase'
+import UserController from '@controllers/UserController'
 
 interface ContainerInstanceMap {
+  databaseAdapter: DatabaseAdapter
   databaseService: DatabaseService
-  databaseUseCase: DatabaseUseCase
-  databasePort: DatabasePort
+  userAdapter: UserAdapter
+  userService: UserService
+  userUseCase: UserUseCase
+  userController: UserController
 }
 
 class Container {
@@ -28,7 +34,28 @@ class Container {
 
 const container = new Container()
 
-container.register('databaseService', new DatabaseService())
-container.register('databaseUseCase', new DatabaseUseCase(container.resolve('databaseService')))
+// Registrar el adaptador de base de datos
+const databaseAdapter = new DatabaseAdapter()
+container.register('databaseAdapter', databaseAdapter)
+
+// Registrar el servicio de base de datos
+const databaseService = new DatabaseService(databaseAdapter)
+container.register('databaseService', databaseService)
+
+// Registrar el adaptador de usuarios
+const userAdapter = new UserAdapter(databaseAdapter)
+container.register('userAdapter', userAdapter)
+
+// Registrar el servicio de usuarios
+const userService = new UserService(userAdapter)
+container.register('userService', userService)
+
+// Registrar el caso de uso de usuarios
+const userUseCase = new UserUseCase(userService)
+container.register('userUseCase', userUseCase)
+
+// Registrar el controlador de usuarios
+const userController = new UserController(userUseCase)
+container.register('userController', userController)
 
 export default container

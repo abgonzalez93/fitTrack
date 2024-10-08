@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 
-export interface DatabasePort {
+interface DatabasePort {
   connect(): Promise<void>
   disconnect(): Promise<void>
   getClient(): MongoClient

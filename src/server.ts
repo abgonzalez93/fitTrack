@@ -1,18 +1,18 @@
 import express, { type Express } from 'express'
-import logger from '@logging/logger'
-import middlewares from '@middlewares/index'
-import router from '@routes/index'
-import config from '@config/config'
 import container from '@infrastructure/container'
+import middlewares from '@middlewares/index'
+import logger from '@logging/logger'
+import config from '@config/config'
+import router from '@routes/index'
 
 const { PORT } = config
-const app: Express = express()
-const databaseUseCase = container.resolve('databaseUseCase')
 
 ;(async () => {
   try {
-    await databaseUseCase.connectDatabase()
+    const databaseService = container.resolve('databaseService')
+    await databaseService.initializeConnection()
 
+    const app: Express = express()
     middlewares(app)
     app.use(router)
 

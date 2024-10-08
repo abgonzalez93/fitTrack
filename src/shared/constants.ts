@@ -1,4 +1,4 @@
-export const httpStatus = {
+const httpStatus = {
   // 2xx Success
   OK: 200,
   CREATED: 201,
@@ -41,7 +41,9 @@ export const httpStatus = {
   HTTP_VERSION_NOT_SUPPORTED: 505
 }
 
-export const responseStatus = {
+const responseStatus = {
   SUCCESS: 'success',
   ERROR: 'error'
 }
+
+export { httpStatus, responseStatus }

@@ -1,5 +1,3 @@
-export const messages = {
-
-}
+const messages = {}
 
 export default messages

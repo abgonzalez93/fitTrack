@@ -1,7 +1,7 @@
 import { Router } from 'express'
+import userRouter from '@routes/UserRoutes'
+import dietRouter from '@routes/DietRoutes'
 // import { welcome } from '@controllers/apiController'
-import userRouter from '@routes/userRoutes'
-import dietRouter from '@routes/dietRoutes'
 
 const apiRouter = Router()
 
