@@ -16,19 +16,27 @@
     "incremental": true,
     "strictPropertyInitialization": true,
     "paths": {
+      // Application
       "@dto/*": ["application/dto/*"],
       "@useCases/*": ["application/useCases/*"],
+
+      // Domain
       "@entities/*": ["domain/entities/*"],
       "@ports/*": ["domain/ports/*"],
       "@services/*": ["domain/services/*"],
+
+      // Infrastructure
       "@adapters/*": ["infrastructure/adapters/*"],
       "@config/*": ["infrastructure/config/*"],
+      "@container/*": ["infrastructure/container/*"],
       "@controllers/*": ["infrastructure/controllers/*"],
       "@database/*": ["infrastructure/database/*"],
       "@logging/*": ["infrastructure/logging/*"],
       "@middlewares/*": ["infrastructure/middlewares/*"],
       "@routes/*": ["infrastructure/routes/*"],
-      "@container/*": ["infrastructure/container/*"],
+      "@validations/*": ["infrastructure/validations/*"],
+
+      // Shared
       "@shared/*": ["shared/*"]
     }
   },

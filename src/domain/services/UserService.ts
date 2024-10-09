@@ -1,11 +1,11 @@
-import CreateUserDto from '@dto/CreateUserDto'
 import UserPort from '@ports/UserPort'
+import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 class UserService {
   constructor(private readonly userPort: UserPort) {}
 
-  async createUser(data: CreateUserDto): Promise<User> {
+  async createUser(data: UserDto): Promise<User> {
     return await this.userPort.createUser(data)
   }
 

@@ -1,7 +1,7 @@
 import { Collection, ObjectId } from 'mongodb'
 import DatabaseAdapter from '@adapters/DatabaseAdapter'
-import CreateUserDto from '@dto/CreateUserDto'
 import UserPort from '@ports/UserPort'
+import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 class UserAdapter implements UserPort {
@@ -11,7 +11,7 @@ class UserAdapter implements UserPort {
     this.collection = this.databaseAdapter.getClient().db().collection('users')
   }
 
-  async createUser(data: CreateUserDto): Promise<User> {
+  async createUser(data: UserDto): Promise<User> {
     const user: User = { ...data, id: new ObjectId().toString() }
     await this.collection.insertOne(user)
     return user

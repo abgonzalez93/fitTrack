@@ -1,11 +1,12 @@
-import CreateUserDto from '@dto/CreateUserDto'
+
 import UserService from '@services/UserService'
+import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 class UserUseCase {
   constructor(private readonly userService: UserService) {}
 
-  async createUser(data: CreateUserDto): Promise<User> {
+  async createUser(data: UserDto): Promise<User> {
     return await this.userService.createUser(data)
   }
 
