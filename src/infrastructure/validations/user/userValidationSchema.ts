@@ -1,8 +1,8 @@
-import { JSONSchemaType } from "ajv"
-import UserSchema from "@validations/user/UserSchema"
+import { JSONSchemaType } from 'ajv'
+import UserSchema from '@validations/user/UserSchema'
 
 const userValidationSchema: JSONSchemaType<UserSchema> = {
-  type: "object",
+  type: 'object',
   properties: {
     name: { type: 'string', minLength: 3 },
     email: { type: 'string', format: 'email' },
