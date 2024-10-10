@@ -10,6 +10,7 @@ class UserController {
 
   async createUser(req: Request, res: Response, next: NextFunction) {
     try {
+      // Validate data with Ajv
       const userData: UserDto = req.body
       validate(userValidationSchema, userData)
 

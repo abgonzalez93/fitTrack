@@ -6,13 +6,13 @@ import config from '@config/config'
 import router from '@routes/index'
 
 const { PORT } = config
+const app: Express = express()
 
 ;(async () => {
   try {
     const databaseService = container.resolve('databaseService')
     await databaseService.initializeConnection()
 
-    const app: Express = express()
     middlewares(app)
     app.use(router)
 

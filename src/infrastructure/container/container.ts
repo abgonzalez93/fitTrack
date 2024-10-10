@@ -1,9 +1,10 @@
 import DatabaseAdapter from '@adapters/DatabaseAdapter'
 import DatabaseService from '@database/DatabaseService'
+import UserController from '@controllers/UserController'
 import UserAdapter from '@adapters/UserAdapter'
 import UserService from '@services/UserService'
 import UserUseCase from '@useCases/UserUseCase'
-import UserController from '@controllers/UserController'
+import logger from '@logging/logger'
 
 interface ContainerInstanceMap {
   databaseAdapter: DatabaseAdapter
@@ -25,7 +26,9 @@ class Container {
     const instance = this.instances[key]
 
     if (!instance) {
-      throw new Error(`Instance for ${key} not found`)
+      const errorMessage = `Instance for ${key} not found`
+      logger.error(errorMessage)
+      throw new Error(errorMessage)
     }
 
     return instance

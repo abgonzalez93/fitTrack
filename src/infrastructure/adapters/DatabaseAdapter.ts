@@ -23,8 +23,9 @@ class DatabaseAdapter implements DatabasePort {
       await this.client.connect()
       logger.info('You successfully connected to MongoDB!')
     } catch (error) {
-      logger.error(`Error connecting to MongoDB: ${error}`)
-      throw new Error('Error connecting to MongoDB')
+      const errorMessage = `Error connecting to MongoDB: ${error}`
+      logger.error(errorMessage)
+      throw new Error(errorMessage)
     }
   }
 
@@ -35,8 +36,9 @@ class DatabaseAdapter implements DatabasePort {
         logger.info('Database connection closed')
       }
     } catch (error) {
-      logger.error(`Error closing database connection: ${error}`)
-      throw new Error('Error closing database connection')
+      const errorMessage = `Error closing database connection: ${error}`
+      logger.error(errorMessage)
+      throw new Error(errorMessage)
     }
   }
 
