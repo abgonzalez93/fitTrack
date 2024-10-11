@@ -17,7 +17,7 @@ class UserAdapter implements UserPort {
   }
 
   async createUser(data: UserDto): Promise<User> {
-    const user: User = { ...data, id: new ObjectId().toString() }
+    const user = { ...data, id: new ObjectId().toString() }
     await this.collection.insertOne(user)
     return user
   }

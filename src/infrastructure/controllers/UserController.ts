@@ -13,7 +13,7 @@ class UserController {
       const users = await this.userUseCase.getAllUsers()
 
       if (users.length === 0) {
-        res.status(httpStatus.NOT_FOUND).send('Users not found')
+        res.status(httpStatus.NO_CONTENT).send('Users not found')
       }
 
       res.status(httpStatus.OK).json(users)
@@ -40,7 +40,7 @@ class UserController {
       const user = await this.userUseCase.getUser(req.params.id)
 
       if (!user) {
-        res.status(httpStatus.NOT_FOUND).send('User not found')
+        res.status(httpStatus.NO_CONTENT).send('User not found')
       }
 
       res.status(httpStatus.OK).json(user)
