@@ -5,6 +5,10 @@ import User from '@entities/User'
 class UserService {
   constructor(private readonly userPort: UserPort) {}
 
+  async getAllUsers(): Promise<User[]> {
+    return await this.userPort.getAllUsers()
+  }
+
   async createUser(data: UserDto): Promise<User> {
     return await this.userPort.createUser(data)
   }

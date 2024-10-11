@@ -2,6 +2,7 @@ import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 interface UserPort {
+  getAllUsers(): Promise<User[]>
   createUser(data: UserDto): Promise<User>
   findUserById(id: string): Promise<User | null>
   updateUser(user: User): Promise<void>

@@ -1,6 +1,6 @@
-import express from 'express'
-import apiRouter from '@routes/ApiRoutes'
 import authRouter from '@routes/AuthRoutes'
+import apiRouter from '@routes/ApiRoutes'
+import express from 'express'
 
 const router = express.Router()
 

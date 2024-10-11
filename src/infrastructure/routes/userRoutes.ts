@@ -1,12 +1,13 @@
+import container from '@container/container'
 import { Router } from 'express'
-// import { getAllUsers, createUser, getUser, updateUser, deleteUser } from '@controllers/userController'
 
 const userRouter = Router()
+const userController = container.resolve('userController')
 
-userRouter.get('/', /* getAllUsers */)
-userRouter.post('/', /* createUser */)
-userRouter.get('/:id', /* getUser */)
-userRouter.put('/:id', /* updateUser */)
-userRouter.delete('/:id', /* deleteUser */)
+userRouter.get('/', userController.getAllUsers)
+userRouter.post('/', userController.createUser)
+userRouter.get('/:id', userController.getUser)
+userRouter.put('/:id', userController.updateUser)
+userRouter.delete('/:id', userController.deleteUser)
 
 export default userRouter

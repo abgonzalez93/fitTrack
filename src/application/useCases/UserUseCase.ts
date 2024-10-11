@@ -6,6 +6,10 @@ import User from '@entities/User'
 class UserUseCase {
   constructor(private readonly userService: UserService) {}
 
+  async getAllUsers(): Promise<User[]> {
+    return await this.userService.getAllUsers()
+  }
+
   async createUser(data: UserDto): Promise<User> {
     return await this.userService.createUser(data)
   }
