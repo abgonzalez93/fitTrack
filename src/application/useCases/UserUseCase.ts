@@ -1,6 +1,6 @@
-
+import CreateUserDto from '@dto/user/CreateUserDto'
+import UpdateUserDto from '@dto/user/UpdateUserDto'
 import UserService from '@services/UserService'
-import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 class UserUseCase {
@@ -10,16 +10,16 @@ class UserUseCase {
     return await this.userService.getAllUsers()
   }
 
-  async createUser(data: UserDto): Promise<User> {
-    return await this.userService.createUser(data)
+  async createUser(userData: CreateUserDto): Promise<User> {
+    return await this.userService.createUser(userData)
   }
 
   async getUser(id: string): Promise<User | null> {
     return await this.userService.getUser(id)
   }
 
-  async updateUser(user: User): Promise<void> {
-    await this.userService.updateUser(user)
+  async updateUser(userData: UpdateUserDto): Promise<void> {
+    await this.userService.updateUser(userData)
   }
 
   async deleteUser(id: string): Promise<void> {

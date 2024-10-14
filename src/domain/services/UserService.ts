@@ -1,5 +1,6 @@
+import CreateUserDto from '@dto/user/CreateUserDto'
+import UpdateUserDto from '@dto/user/UpdateUserDto'
 import UserPort from '@ports/UserPort'
-import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 class UserService {
@@ -9,16 +10,16 @@ class UserService {
     return await this.userPort.getAllUsers()
   }
 
-  async createUser(data: UserDto): Promise<User> {
-    return await this.userPort.createUser(data)
+  async createUser(userData: CreateUserDto): Promise<User> {
+    return await this.userPort.createUser(userData)
   }
 
   async getUser(id: string): Promise<User | null> {
     return await this.userPort.findUserById(id)
   }
 
-  async updateUser(user: User): Promise<void> {
-    await this.userPort.updateUser(user)
+  async updateUser(userData: UpdateUserDto): Promise<void> {
+    await this.userPort.updateUser(userData)
   }
 
   async deleteUser(id: string): Promise<void> {

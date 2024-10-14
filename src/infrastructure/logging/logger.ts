@@ -1,5 +1,5 @@
-import path from 'path'
 import { createLogger, format, transports } from 'winston'
+import path from 'path'
 
 const { align, combine, colorize, printf, timestamp } = format
 

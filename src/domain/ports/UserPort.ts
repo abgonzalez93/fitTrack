@@ -1,11 +1,12 @@
-import UserDto from '@dto/UserDto'
+import CreateUserDto from '@dto/user/CreateUserDto'
+import UpdateUserDto from '@dto/user/UpdateUserDto'
 import User from '@entities/User'
 
 interface UserPort {
   getAllUsers(): Promise<User[]>
-  createUser(data: UserDto): Promise<User>
+  createUser(userData: CreateUserDto): Promise<User>
   findUserById(id: string): Promise<User | null>
-  updateUser(user: User): Promise<void>
+  updateUser(userData: UpdateUserDto): Promise<void>
   deleteUser(id: string): Promise<void>
 }
 

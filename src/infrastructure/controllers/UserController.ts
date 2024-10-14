@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
-import userValidationSchema from '@validations/user/userValidationSchema'
+import createUserValidation from '@validations/user/createUserValidation'
+import CreateUserDto from '@dto/user/CreateUserDto'
 import UserUseCase from '@useCases/UserUseCase'
 import httpStatus from '@shared/httpStatus'
 import validate from '@validations/index'
-import UserDto from '@dto/UserDto'
 
 class UserController {
   constructor(private readonly userUseCase: UserUseCase) {}
@@ -25,8 +25,8 @@ class UserController {
   async createUser(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       // Validate data with Ajv
-      const userData: UserDto = req.body
-      validate(userValidationSchema, userData)
+      const userData: CreateUserDto = req.body
+      validate(createUserValidation, userData)
 
       const user = await this.userUseCase.createUser(userData)
       res.status(httpStatus.CREATED).json(user)

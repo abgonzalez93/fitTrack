@@ -1,7 +1,8 @@
 import { Collection, ObjectId } from 'mongodb'
 import DatabaseAdapter from '@adapters/DatabaseAdapter'
+import CreateUserDto from '@dto/user/CreateUserDto'
+import UpdateUserDto from '@dto/user/UpdateUserDto'
 import UserPort from '@ports/UserPort'
-import UserDto from '@dto/UserDto'
 import User from '@entities/User'
 
 class UserAdapter implements UserPort {
@@ -16,19 +17,26 @@ class UserAdapter implements UserPort {
     return users
   }
 
-  async createUser(data: UserDto): Promise<User> {
-    const user = { ...data, id: new ObjectId().toString() }
+  async createUser(userData: CreateUserDto): Promise<User> {
+    const user = new User(
+      new ObjectId().toString(),
+      userData.name,
+      userData.email,
+      userData.password,
+      userData.role
+    )
+
     await this.collection.insertOne(user)
     return user
   }
 
   async findUserById(id: string): Promise<User | null> {
     const user = await this.collection.findOne({ _id: new ObjectId(id) })
-    return user ? { ...user, id: user._id.toString() } : null
+    return user ? user : null
   }
 
-  async updateUser(user: User): Promise<void> {
-    await this.collection.updateOne({ _id: new ObjectId(user.id) }, { $set: user })
+  async updateUser(userData: UpdateUserDto): Promise<void> {
+    await this.collection.updateOne({ _id: new ObjectId(userData.id) }, { $set: userData })
   }
 
   async deleteUser(id: string): Promise<void> {
