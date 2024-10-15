@@ -8,12 +8,12 @@ class Client extends User {
     password: string,
     public nutritionistId: string,
     public age: number,
-    public weight: number,
     public height: number,
+    public weight: number,
     public goals: string,
     public activityLevel: string,
   ) {
-    super(id, name, email, password, 'client', false)
+    super(id, name, email, password, false)
   }
 }
 

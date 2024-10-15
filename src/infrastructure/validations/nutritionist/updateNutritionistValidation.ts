@@ -1,17 +1,17 @@
-import UpdateUserDto from '@dto/user/UpdateUserDto'
+import UpdateNutritionistDto from '@dto/nutritionist/UpdateNutritionistDto'
 import { JSONSchemaType } from 'ajv'
 
-const updateUserValidation: JSONSchemaType<UpdateUserDto> = {
+const updateNutritionistValidation: JSONSchemaType<UpdateNutritionistDto> = {
   type: 'object',
   properties: {
-    id: { type: 'string' },
     name: { type: 'string', minLength: 3, nullable: true },
     email: { type: 'string', format: 'email', nullable: true },
     password: { type: 'string', minLength: 6, nullable: true },
     isActive: { type: 'boolean', nullable: true },
+    clients: { type: 'array', items: { type: 'string' }, nullable: true, }
   },
-  required: ['id'],
+  required: [],
   additionalProperties: false,
 }
 
-export default updateUserValidation
+export default updateNutritionistValidation

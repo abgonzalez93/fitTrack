@@ -46,7 +46,6 @@ const httpStatus = {
   UNSUPPORTED_MEDIA_TYPE: 415, // The request entity has a media type which the server or resource does not support.
   RANGE_NOT_SATISFIABLE: 416, // The client has asked for a portion of the file, but the server cannot supply that portion.
   EXPECTATION_FAILED: 417, // The server cannot meet the requirements of the Expect request-header field.
-  I_AM_A_TEAPOT: 418, // An April Fools' joke; the server is a teapot and cannot brew coffee.
   MISDIRECTED_REQUEST: 421, // The request was directed at a server that is not able to produce a response.
 
   // 5xx: Server Error - The server failed to fulfill an apparently valid request

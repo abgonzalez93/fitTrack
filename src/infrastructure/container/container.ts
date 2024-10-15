@@ -1,18 +1,26 @@
 import DatabaseAdapter from '@adapters/DatabaseAdapter'
 import DatabaseService from '@database/DatabaseService'
-import UserController from '@controllers/UserController'
-import UserAdapter from '@adapters/UserAdapter'
-import UserService from '@services/UserService'
-import UserUseCase from '@useCases/UserUseCase'
+import NutritionistController from '@controllers/NutritionistController'
+import NutritionistAdapter from '@adapters/NutritionistAdapter'
+import NutritionistService from '@services/NutritionistService'
+import NutritionistUseCase from '@useCases/NutritionistUseCase'
+import ClientController from '@controllers/ClientController'
+import ClientAdapter from '@adapters/ClientAdapter'
+import ClientService from '@services/ClientService'
+import ClientUseCase from '@useCases/ClientUseCase'
 import logger from '@logging/logger'
 
 interface ContainerInstanceMap {
   databaseAdapter: DatabaseAdapter
   databaseService: DatabaseService
-  userAdapter: UserAdapter
-  userService: UserService
-  userUseCase: UserUseCase
-  userController: UserController
+  nutritionistAdapter: NutritionistAdapter
+  nutritionistService: NutritionistService
+  nutritionistUseCase: NutritionistUseCase
+  nutritionistController: NutritionistController
+  clientAdapter: ClientAdapter
+  clientService: ClientService
+  clientUseCase: ClientUseCase
+  clientController: ClientController
 }
 
 class Container {
@@ -45,20 +53,36 @@ container.register('databaseAdapter', databaseAdapter)
 const databaseService = new DatabaseService(databaseAdapter)
 container.register('databaseService', databaseService)
 
-// Registrar el adaptador de usuarios
-const userAdapter = new UserAdapter(databaseAdapter)
-container.register('userAdapter', userAdapter)
+// Registrar el adaptador de nutricionistas
+const nutritionistAdapter = new NutritionistAdapter(databaseAdapter)
+container.register('nutritionistAdapter', nutritionistAdapter)
 
-// Registrar el servicio de usuarios
-const userService = new UserService(userAdapter)
-container.register('userService', userService)
+// Registrar el servicio de nutricionistas
+const nutritionistService = new NutritionistService(nutritionistAdapter)
+container.register('nutritionistService', nutritionistService)
 
-// Registrar el caso de uso de usuarios
-const userUseCase = new UserUseCase(userService)
-container.register('userUseCase', userUseCase)
+// Registrar el caso de uso de nutricionistas
+const nutritionistUseCase = new NutritionistUseCase(nutritionistService)
+container.register('nutritionistUseCase', nutritionistUseCase)
 
-// Registrar el controlador de usuarios
-const userController = new UserController(userUseCase)
-container.register('userController', userController)
+// Registrar el controlador de nutricionistas
+const nutritionistController = new NutritionistController(nutritionistUseCase)
+container.register('nutritionistController', nutritionistController)
+
+// Registrar el adaptador de clientes
+const clientAdapter = new ClientAdapter(databaseAdapter)
+container.register('clientAdapter', clientAdapter)
+
+// Registrar el servicio de clientes
+const clientService = new ClientService(clientAdapter)
+container.register('clientService', clientService)
+
+// Registrar el caso de uso de clientes
+const clientUseCase = new ClientUseCase(clientService)
+container.register('clientUseCase', clientUseCase)
+
+// Registrar el controlador de clientes
+const clientController = new ClientController(clientUseCase)
+container.register('clientController', clientController)
 
 export default container

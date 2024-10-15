@@ -8,7 +8,7 @@ class Nutritionist extends User {
     password: string,
     public clients: string[]
   ) {
-    super(id, name, email, password, 'nutritionist', false)
+    super(id, name, email, password, false)
   }
 }
 

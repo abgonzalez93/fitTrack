@@ -1,12 +1,11 @@
-import userRouter from '@routes/UserRoutes'
-import dietRouter from '@routes/DietRoutes'
+import nutritionistRouter from '@routes/NutritionistRoutes'
+import clientRouter from './ClientRoutes'
 import { Router } from 'express'
-// import { welcome } from '@controllers/apiController'
 
 const apiRouter = Router()
 
 apiRouter.get('/', /* welcome */)
-apiRouter.use('/user', userRouter)
-apiRouter.use('/diet', dietRouter)
+apiRouter.use('/nutritionist', nutritionistRouter)
+apiRouter.use('/client', clientRouter)
 
 export default apiRouter
