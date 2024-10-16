@@ -10,6 +10,23 @@ class Nutritionist extends User {
   ) {
     super(id, name, email, password, false)
   }
+
+  // Métodos para obtener y actualizar atributos
+  getClients(): string[] {
+    return this.clients
+  }
+
+  addClient(clientId: string): void {
+    this.clients.push(clientId)
+  }
+
+  removeClient(clientId: string): void {
+    this.clients = this.clients.filter(client => client !== clientId)
+  }
+
+  updateClients(newClients: string[]): void {
+    this.clients = newClients
+  }
 }
 
 export default Nutritionist

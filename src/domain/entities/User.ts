@@ -6,6 +6,31 @@ abstract class User {
     public password: string,
     public isActive: boolean = false
   ) {}
+
+  // Métodos para obtener y actualizar atributos
+  getName(): string {
+    return this.name
+  }
+
+  updateName(newName: string): void {
+    this.name = newName
+  }
+
+  getEmail(): string {
+    return this.email
+  }
+
+  updateEmail(newEmail: string): void {
+    this.email = newEmail
+  }
+
+  getPassword(): string {
+    return this.password
+  }
+
+  updatePassword(newPassword: string): void {
+    this.password = newPassword
+  }
 }
 
 export default User

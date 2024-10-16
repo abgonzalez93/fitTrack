@@ -1,4 +1,4 @@
-import container from '@container/container'
+import container from '@container/index'
 import { Router } from 'express'
 
 const clientRouter = Router()

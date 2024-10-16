@@ -1,5 +1,5 @@
 import nutritionistRouter from '@routes/NutritionistRoutes'
-import clientRouter from './ClientRoutes'
+import clientRouter from '@routes/ClientRoutes'
 import { Router } from 'express'
 
 const apiRouter = Router()

@@ -1,4 +1,4 @@
-import { type Application } from 'express'
+import { Application } from 'express'
 import passport from 'passport'
 
 const authMiddleware = (app: Application): void => {

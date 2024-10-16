@@ -1,6 +1,6 @@
-import express, { type Express } from 'express'
+import express, { Express } from 'express'
 import middlewares from '@middlewares/index'
-import container from '@container/container'
+import container from '@container/index'
 import logger from '@logging/logger'
 import config from '@config/config'
 import router from '@routes/index'
