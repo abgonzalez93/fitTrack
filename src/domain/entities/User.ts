@@ -12,7 +12,7 @@ abstract class User {
     return this.name
   }
 
-  updateName(newName: string): void {
+  setName(newName: string): void {
     this.name = newName
   }
 
@@ -20,7 +20,7 @@ abstract class User {
     return this.email
   }
 
-  updateEmail(newEmail: string): void {
+  setEmail(newEmail: string): void {
     this.email = newEmail
   }
 
@@ -28,7 +28,7 @@ abstract class User {
     return this.password
   }
 
-  updatePassword(newPassword: string): void {
+  setPassword(newPassword: string): void {
     this.password = newPassword
   }
 }

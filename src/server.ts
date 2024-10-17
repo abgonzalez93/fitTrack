@@ -1,8 +1,8 @@
-import express, { Express } from 'express'
 import middlewares from '@middlewares/index'
+import express, { Express } from 'express'
 import container from '@container/index'
 import logger from '@logging/logger'
-import config from '@config/config'
+import config from '@config/index'
 import router from '@routes/index'
 
 const { PORT } = config

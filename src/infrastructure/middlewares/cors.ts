@@ -1,5 +1,5 @@
 import cors from 'cors'
-import config from '@config/config'
+import config from '@config/index'
 
 const { ALLOWED_ORIGINS } = config
 

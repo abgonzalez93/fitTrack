@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import httpStatus from '@shared/httpStatus'
 import logger from '@logging/logger'
-import config from '@config/config'
+import config from '@config/index'
 
 const { NODE_ENV } = config
 
@@ -17,7 +17,7 @@ const errorHandler = (err: Error, _req: Request, res: Response, next: NextFuncti
 
   res.json({
     message: err.message,
-    ...(NODE_ENV === 'develop' && { stack: err.stack }),
+    ...(NODE_ENV === 'development' && { stack: err.stack }),
   })
 }
 

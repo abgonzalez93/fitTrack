@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion } from 'mongodb'
 import DatabasePort from '@ports/DatabasePort'
 import logger from '@logging/logger'
-import config from '@config/config'
+import config from '@config/index'
 
 const { DB_URI } = config
 

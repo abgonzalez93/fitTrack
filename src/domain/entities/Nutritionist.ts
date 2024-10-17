@@ -16,16 +16,16 @@ class Nutritionist extends User {
     return this.clients
   }
 
+  setClients(newClients: string[]): void {
+    this.clients = newClients
+  }
+
   addClient(clientId: string): void {
     this.clients.push(clientId)
   }
 
   removeClient(clientId: string): void {
     this.clients = this.clients.filter(client => client !== clientId)
-  }
-
-  updateClients(newClients: string[]): void {
-    this.clients = newClients
   }
 }
 

@@ -21,7 +21,7 @@ class Client extends User {
     return this.age
   }
 
-  updateAge(newAge: number): void {
+  setAge(newAge: number): void {
     this.age = newAge
   }
 
@@ -29,7 +29,7 @@ class Client extends User {
     return this.height
   }
 
-  updateHeight(newHeight: number): void {
+  setHeight(newHeight: number): void {
     this.height = newHeight
   }
 
@@ -37,7 +37,7 @@ class Client extends User {
     return this.weight
   }
 
-  updateWeight(newWeight: number): void {
+  setWeight(newWeight: number): void {
     this.weight = newWeight
   }
 
@@ -45,7 +45,7 @@ class Client extends User {
     return this.goals
   }
 
-  updateGoals(newGoals: string): void {
+  setGoals(newGoals: string): void {
     this.goals = newGoals
   }
 
@@ -53,8 +53,8 @@ class Client extends User {
     return this.activityLevel
   }
 
-  updateActivityLevel(newLevel: string): void {
-    this.activityLevel = newLevel
+  setActivityLevel(newActivityLevel: string): void {
+    this.activityLevel = newActivityLevel
   }
 }
 

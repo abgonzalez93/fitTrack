@@ -1,13 +1,12 @@
-import { Application } from 'express'
-import config from '@config/config'
-import helmetMiddleware from '@middlewares/helmet'
 import compressionMiddleware from '@middlewares/compression'
-import corsMiddleware from '@middlewares/cors'
-import rateLimiter from '@middlewares/rateLimit'
-import morganMiddleware from '@middlewares/morgan'
-import authMiddleware from '@middlewares/auth'
 import errorHandler from '@middlewares/errorHandler'
-import express from 'express'
+import helmetMiddleware from '@middlewares/helmet'
+import morganMiddleware from '@middlewares/morgan'
+import rateLimiter from '@middlewares/rateLimit'
+import authMiddleware from '@middlewares/auth'
+import corsMiddleware from '@middlewares/cors'
+import express, { Application } from 'express'
+import config from '@config/index'
 
 const { BODY_LIMIT } = config
 
@@ -18,6 +17,8 @@ const middlewares = (app: Application): void => {
   app.use(corsMiddleware)
   app.use(rateLimiter)
   app.use(morganMiddleware)
+
+  // Auth middleware
   authMiddleware(app)
 
   // Parses bodies

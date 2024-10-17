@@ -1,5 +1,5 @@
 import rateLimit from 'express-rate-limit'
-import config from '@config/config'
+import config from '@config/index'
 
 const { RATE_LIMIT_MAX } = config
 

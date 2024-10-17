@@ -5,10 +5,11 @@ import Ajv from 'ajv'
 const ajv = new Ajv()
 
 const validate = <T>(schema: JSONSchemaType<T>, data: T): boolean => {
-  const valid = ajv.validate(schema, data)
+  const validateSchema = ajv.compile(schema)
+  const valid = validateSchema(data)
 
   if (!valid) {
-    const errorMessage = `Validation failed: ${JSON.stringify(ajv.errors)}`
+    const errorMessage = `Validation failed: ${JSON.stringify(validateSchema.errors)}`
     logger.error(errorMessage)
     throw new Error(errorMessage)
   }
