@@ -8,4 +8,3 @@ class InstanceNotFoundError extends CustomError {
 }
 
 export default InstanceNotFoundError
-
