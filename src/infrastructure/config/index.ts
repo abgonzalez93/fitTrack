@@ -1,6 +1,4 @@
-import configValidation from '@validations/config/configValidation'
 import requiredConfig from './requiredConfig'
-import validate from '@validations/index'
 import Config from '@config/Config'
 
 const config: Config = {
@@ -18,8 +16,5 @@ const config: Config = {
 
 // Required config in .env file [ DB_URI, JWT_SECRET_ACCESS, JWT_SECRET_REFRESH ]
 requiredConfig(config)
-
-// Validate data with Ajv
-validate(configValidation, config)
 
 export default config

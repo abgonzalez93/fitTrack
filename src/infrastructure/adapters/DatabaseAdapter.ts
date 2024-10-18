@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion } from 'mongodb'
+import DatabaseError from '@errors/DatabaseError'
 import DatabasePort from '@ports/DatabasePort'
 import logger from '@logging/logger'
 import config from '@config/index'
@@ -25,7 +26,7 @@ class DatabaseAdapter implements DatabasePort {
     } catch (error) {
       const errorMessage = `Error connecting to MongoDB: ${error}`
       logger.error(errorMessage)
-      throw new Error(errorMessage)
+      throw new DatabaseError(errorMessage)
     }
   }
 
@@ -38,7 +39,7 @@ class DatabaseAdapter implements DatabasePort {
     } catch (error) {
       const errorMessage = `Error closing database connection: ${error}`
       logger.error(errorMessage)
-      throw new Error(errorMessage)
+      throw new DatabaseError(errorMessage)
     }
   }
 

@@ -1,3 +1,4 @@
+import ValidationError from '@errors/ValidationError'
 import { JSONSchemaType } from 'ajv'
 import logger from '@logging/logger'
 import Ajv from 'ajv'
@@ -11,7 +12,7 @@ const validate = <T>(schema: JSONSchemaType<T>, data: T): boolean => {
   if (!valid) {
     const errorMessage = `Validation failed: ${JSON.stringify(validateSchema.errors)}`
     logger.error(errorMessage)
-    throw new Error(errorMessage)
+    throw new ValidationError(errorMessage)
   }
 
   return valid

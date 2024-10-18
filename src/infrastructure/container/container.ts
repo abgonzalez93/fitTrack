@@ -1,4 +1,5 @@
 import ContainerInstanceMap from '@container/ContainerInstanceMap'
+import InstanceNotFoundError from '@errors/InstanceNotFoundError'
 import logger from '@logging/logger'
 
 class Container {
@@ -14,7 +15,7 @@ class Container {
     if (!instance) {
       const errorMessage = `Instance for ${key} not found`
       logger.error(errorMessage)
-      throw new Error(errorMessage)
+      throw new InstanceNotFoundError(errorMessage)
     }
 
     return instance

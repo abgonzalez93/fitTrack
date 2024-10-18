@@ -1,20 +1,35 @@
 import { createLogger, format, transports } from 'winston'
 import path from 'path'
 
-const { align, combine, colorize, printf, timestamp } = format
-
 const logger = createLogger({
   level: 'info',
-  format: combine(
-    align(),
-    colorize({ all: true }),
-    timestamp({ format: 'YYYY-MM-DD hh:mm:ss A' }),
-    printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`),
+  format: format.combine(
+    format.timestamp({ format: 'YYYY-MM-DD hh:mm:ss A' }),
   ),
   transports: [
-    new transports.File({ filename: path.resolve(__dirname, '../logging/logs/error.log'), level: 'error' }),
-    new transports.File({ filename: path.resolve(__dirname, '../logging/logs/combined.log') }),
-    new transports.Console(),
+    new transports.File({
+      filename: path.resolve(__dirname, '../logging/logs/error.log'),
+      level: 'error',
+      format: format.combine(
+        format.timestamp(),
+        format.printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`),
+      ),
+    }),
+    new transports.File({
+      filename: path.resolve(__dirname, '../logging/logs/combined.log'),
+      format: format.combine(
+        format.timestamp(),
+        format.printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`),
+      ),
+    }),
+    new transports.Console({
+      handleExceptions: true,
+      handleRejections: true,
+      format: format.combine(
+        format.colorize({ level: true }),
+        format.printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`)
+      ),
+    }),
   ],
 })
 

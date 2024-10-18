@@ -31,6 +31,7 @@
       "@container/*": ["infrastructure/container/*"],
       "@controllers/*": ["infrastructure/controllers/*"],
       "@database/*": ["infrastructure/database/*"],
+      "@errors/*": ["infrastructure/errors/*"],
       "@logging/*": ["infrastructure/logging/*"],
       "@middlewares/*": ["infrastructure/middlewares/*"],
       "@routes/*": ["infrastructure/routes/*"],

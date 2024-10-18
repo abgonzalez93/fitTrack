@@ -1,13 +1,16 @@
+import MissingConfigError from '@errors/MissingConfigError'
 import logger from '@logging/logger'
 import Config from '@config/Config'
 
 const required = ['DB_URI', 'JWT_SECRET_ACCESS', 'JWT_SECRET_REFRESH']
 
 const requiredConfig = (config: Config): void => {
-  for (const key of required) {
-    if (!config[key as keyof Config]) {
-      logger.error(`Missing ${key} in .env file`)
-    }
+  const missingKeys = required.filter((key) => !config[key as keyof Config])
+
+  if (missingKeys.length > 0) {
+    const errorMessage = `Missing required config values in .env file: ${missingKeys.join(', ')}`
+    logger.error(errorMessage)
+    throw new MissingConfigError(errorMessage)
   }
 }
 
