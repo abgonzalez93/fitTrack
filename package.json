@@ -3,7 +3,7 @@
   "author": "Antonio Bueno González",
   "version": "1.0.0",
   "scripts": {
-    "start": "node --watch -r ts-node/register -r tsconfig-paths/register --env-file=.env src/server.ts",
+    "start": "node --watch -r ts-node/register -r tsconfig-paths/register src/server.ts",
     "build": "tsc",
     "start:prod": "node dist/server.js",
     "eslint": "npx eslint src/**/*.{ts,tsx}",
@@ -28,7 +28,7 @@
     "winston": "^3.15.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.12.0",
+    "@eslint/js": "^9.13.0",
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/eslint-plugin-ts": "^2.9.0",
     "@types/bcrypt": "^5.0.2",
@@ -39,7 +39,7 @@
     "@types/morgan": "^1.9.9",
     "@types/passport": "^1.0.16",
     "@types/passport-jwt": "^4.0.1",
-    "eslint": "^9.12.0",
+    "eslint": "^9.13.0",
     "globals": "^15.11.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",

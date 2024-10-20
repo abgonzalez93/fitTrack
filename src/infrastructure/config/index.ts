@@ -1,6 +1,8 @@
 import requiredConfig from './requiredConfig'
 import Config from '@config/Config'
 
+process.loadEnvFile()
+
 const config: Config = {
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS?.split(',') ?? (process.env.NODE_ENV === 'production' ? [] : ['*']),
   BODY_LIMIT: process.env.BODY_LIMIT ?? '100mb',
