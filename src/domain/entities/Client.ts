@@ -13,7 +13,7 @@ class Client extends User {
     public goals: string,
     public activityLevel: string,
   ) {
-    super(id, name, email, password, false)
+    super(id, name, email, password, false, 'client')
   }
 
   // Métodos para obtener y actualizar atributos

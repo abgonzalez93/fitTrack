@@ -1,11 +1,13 @@
 import NutritionistContainerMap from '@container/nutritionist/nutritionistTypes'
 import DatabaseContainerMap from '@container/database/databaseTypes'
 import ClientContainerMap from '@container/client/clientTypes'
+import UserContainerMap from '@container/user/userTypes'
 
 interface ContainerInstanceMap extends
-  NutritionistContainerMap,
+  DatabaseContainerMap,
+  UserContainerMap,
   ClientContainerMap,
-  DatabaseContainerMap
+  NutritionistContainerMap
 {}
 
 export default ContainerInstanceMap

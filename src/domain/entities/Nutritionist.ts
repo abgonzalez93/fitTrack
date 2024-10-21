@@ -8,7 +8,7 @@ class Nutritionist extends User {
     password: string,
     public clients: string[]
   ) {
-    super(id, name, email, password, false)
+    super(id, name, email, password, false, 'nutritionist')
   }
 
   // Métodos para obtener y actualizar atributos

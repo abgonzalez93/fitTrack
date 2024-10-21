@@ -4,7 +4,8 @@ abstract class User {
     public name: string,
     public email: string,
     public password: string,
-    public isActive: boolean = false
+    public isActive: boolean = false,
+    public role: 'nutritionist' | 'client',
   ) {}
 
   // Métodos para obtener y actualizar atributos
@@ -30,6 +31,10 @@ abstract class User {
 
   setPassword(newPassword: string): void {
     this.password = newPassword
+  }
+
+  getRole(): string {
+    return this.role
   }
 }
 
