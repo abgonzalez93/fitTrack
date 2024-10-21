@@ -1,11 +1,11 @@
-import UserService from '@services/UserService'
+import UserPort from '@ports/UserPort'
 import User from '@entities/User'
 
 class UserUseCase {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userPort: UserPort) {}
 
   async getClient(id: string): Promise<User | null> {
-    return await this.userService.getClient(id)
+    return await this.userPort.findUserById(id)
   }
 }
 

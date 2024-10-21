@@ -23,7 +23,6 @@
       // Domain
       "@entities/*": ["domain/entities/*"],
       "@ports/*": ["domain/ports/*"],
-      "@services/*": ["domain/services/*"],
 
       // Infrastructure
       "@adapters/*": ["infrastructure/adapters/*"],

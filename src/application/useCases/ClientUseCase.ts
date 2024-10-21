@@ -1,29 +1,29 @@
 import CreateClientDto from '@dto/client/CreateClientDto'
 import UpdateClientDto from '@dto/client/UpdateClientDto'
-import ClientService from '@services/ClientService'
+import ClientPort from '@ports/ClientPort'
 import Client from '@entities/Client'
 
 class ClientUseCase {
-  constructor(private readonly clientService: ClientService) {}
+  constructor(private readonly clientPort: ClientPort) {}
 
   async getAllClients(): Promise<Client[]> {
-    return await this.clientService.getAllClients()
+    return await this.clientPort.getAllClients()
   }
 
   async createClient(data: CreateClientDto): Promise<void> {
-    return await this.clientService.createClient(data)
+    return await this.clientPort.createClient(data)
   }
 
   async getClient(id: string): Promise<Client | null> {
-    return await this.clientService.getClient(id)
+    return await this.clientPort.findClientById(id)
   }
 
   async updateClient(id: string, data: UpdateClientDto): Promise<void> {
-    await this.clientService.updateClient(id, data)
+    await this.clientPort.updateClient(id, data)
   }
 
   async deleteClient(id: string): Promise<void> {
-    await this.clientService.deleteClient(id)
+    await this.clientPort.deleteClient(id)
   }
 }
 
